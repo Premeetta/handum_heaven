@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> DeafUserList</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table border="3">
+            <tr>
+                <td>SL NO</td>
+                <td>Name</td>
+                <td>Photo</td>
+                <td>Email</td>
+                <td>Action</td>
+            </tr>
+            {% for i in abcd %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.deafuser_name}}</td>
+                <td><img src="{{i.deafuser_photo.url}}" width="200" alt=""></td>
+                <td>{{i.deafuser_email}}</td>
+                <td><a href="{% url 'User:requestdeaf' i.id %}">Request</a></td>
+
+                <td></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+</html>
+{% if msg %}
+<script>
+    alert("{{msg}}")
+    window.location="{% url 'User:DeafUserList' %}"
+</script>
+
+{% endif %}
