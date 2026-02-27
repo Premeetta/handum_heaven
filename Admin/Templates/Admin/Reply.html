@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reply</title>
+</head>
+<body>
+     <form action=""method = "post">
+        <h1 align="center">Reply</h1>
+        {% csrf_token %}
+        <table border="2" align="center">
+            <tr>
+                <td>Reply</td>
+                <td><input type="text" name="reply_txt" id=""  required></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="submit" required></td>
+            </tr>
+        </table>
+</body>
+</html>
+
+{% if msg %}
+<script>
+    alert("{{msg}}")
+    window.location = "{% url 'Admin:ViewComplaint' %}"
+</script>
+
+{% endif %}
